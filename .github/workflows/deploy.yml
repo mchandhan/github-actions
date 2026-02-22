@@ -10,36 +10,19 @@ env:
 
 jobs:
 
-  test:
-    runs-on: ubuntu-latest
-
-    steps:
-      - name: Checkout Code
-        uses: actions/checkout@v4
-
-      - name: Setup Node
-        uses: actions/setup-node@v4
-        with:
-          node-version: '18'
-
-      - name: Debug - List Files
-        run: |
-          pwd
-          ls -la
-
-      - name: Install Dependencies
-        run: npm install
-
-      - name: Run Tests
-        run: npm test || echo "No tests found, skipping"
-
   build:
-    needs: test
     runs-on: ubuntu-latest
 
     steps:
       - name: Checkout Code
         uses: actions/checkout@v4
+
+      - name: Debug - Show Files
+        run: |
+          echo "Current directory:"
+          pwd
+          echo "Files:"
+          ls -la
 
       - name: Login to DockerHub
         uses: docker/login-action@v3
