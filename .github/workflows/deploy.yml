@@ -53,8 +53,8 @@ jobs:
           username: ${{ secrets.SERVER_USER }}
           key: ${{ secrets.SERVER_SSH_KEY }}
           script: |
-            docker pull ${{ secrets.DOCKER_USERNAME }}/$IMAGE_NAME:latest
+            docker pull ${{ secrets.DOCKER_USERNAME }}/newapp:latest
             docker stop newapp-container || true
             docker rm newapp-container || true
-            docker run -d -p 80:3000 --name newapp-container ${{ secrets.DOCKER_USERNAME }}/$IMAGE_NAME:latest
+            docker run -d -p 80:3000 --name newapp-container ${{ secrets.DOCKER_USERNAME }}/newapp:latest
             docker image prune -f
