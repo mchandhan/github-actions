@@ -96,7 +96,7 @@ jobs:
             sleep 5
 
             echo "Checking container health..."
-            curl -f http://localhost:80 || (echo "Container failed!" && exit 1)
+            curl -f http://localhost:3000 || (echo "Container failed!" && exit 1)
 
             echo "Deployment successful!"
             docker image prune -f
